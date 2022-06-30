@@ -43,6 +43,21 @@ async function run() {
         })
 
 
+        // update billing info
+        app.put('/update-billing/:id', async (req, res) => {
+            const id = req.params.id;
+            const bill = req.body;
+            const filter = { _id: ObjectId(id) }
+            const updateDocs = {
+                $set: {
+                    bill: bill
+                }
+            }
+            const result = await collection.updateOne(filter, updateDocs)
+            res.json(result)
+        })
+
+
     } finally {
         // await client.close();
     }
