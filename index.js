@@ -25,6 +25,12 @@ async function run() {
         })
 
 
+        // GET all billing info
+        app.get('/billing-list', async (req, res) => {
+            const cursor = collection.find({})
+            const result = await cursor.toArray();
+            res.send(result)
+        });
 
 
 
