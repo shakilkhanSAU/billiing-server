@@ -20,7 +20,7 @@ async function run() {
         // add a new bill  (POST API)
         app.post('/add-billing', async (req, res) => {
             const bill = req.body;
-            const result = await productsCollection.insertOne(bill);
+            const result = await collection.insertOne(bill);
             res.json(result)
         })
 
