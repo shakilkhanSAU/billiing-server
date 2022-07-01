@@ -41,7 +41,8 @@ async function run() {
             const size = parseInt(req.query.size)
             let billing;
             if (page) {
-                billing = await cursor.skip(page * size).limit(size).toArray()
+                billing = await cursor.skip(page * size).limit(size).sort({ _id: -1 }).toArray()
+
             } else {
                 billing = await cursor.toArray();
             }
